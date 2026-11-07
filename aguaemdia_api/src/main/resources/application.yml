@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: agua-em-dia
+  datasource:
+    url: ${DB_URL:jdbc:sqlserver://localhost:1433;databaseName=aguaemdia;encrypt=true;trustServerCertificate=true}
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:Agua@Dia2026!}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate          # o esquema é do Flyway; o Hibernate só confere
+    properties:
+      hibernate:
+        use_nationalized_character_data: true   # String <-> NVARCHAR
+        jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 35MB
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:25}
+    username: ${MAIL_USER:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail.smtp.auth: ${MAIL_AUTH:false}
+      mail.smtp.starttls.enable: ${MAIL_STARTTLS:false}
+  jackson:
+    default-property-inclusion: non_null
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+app:
+  timezone: America/Recife
+  url-base-front: ${APP_URL_FRONT:http://localhost:5173}
+  cors-origens: ${APP_CORS_ORIGENS:http://localhost:5173,http://localhost:3000,http://127.0.0.1:5500}
+  jwt:
+    # >= 32 caracteres. Em produção, SEMPRE definir via variável de ambiente.
+    segredo: ${JWT_SEGREDO:troque-este-segredo-em-producao-0123456789abcdef}
+    expiracao-minutos: ${JWT_EXPIRACAO_MINUTOS:60}
+  armazenamento:
+    diretorio: ${UPLOAD_DIR:./uploads}
+  mail:
+    enabled: ${MAIL_ENABLED:false}      # false = e-mails vão para o log (somente desenvolvimento)
+    remetente: ${MAIL_FROM:nao-responder@aguaemdia.local}
+  bootstrap:
+    admin-email: ${ADMIN_EMAIL:}
+    admin-senha: ${ADMIN_SENHA:}
+  notificacoes:
+    intervalo-ms: 30000
+  prioridade:
+    intervalo-ms: 900000
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

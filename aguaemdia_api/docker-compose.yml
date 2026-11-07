@@ -1,0 +1,31 @@
+# Banco de desenvolvimento: SQL Server 2022 + criação automática do banco "aguaemdia".
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: aguaemdia-sqlserver
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Agua@Dia2026!"
+      MSSQL_PID: Developer
+    ports:
+      - "1433:1433"
+    volumes:
+      - sqlserver-data:/var/opt/mssql
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -C -S localhost -U sa -P 'Agua@Dia2026!' -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+  db-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    depends_on:
+      sqlserver:
+        condition: service_healthy
+    entrypoint: >
+      /opt/mssql-tools18/bin/sqlcmd -C -S sqlserver -U sa -P 'Agua@Dia2026!'
+      -Q "IF DB_ID('aguaemdia') IS NULL CREATE DATABASE aguaemdia COLLATE SQL_Latin1_General_CP1_CI_AS"
+    restart: "no"
+
+volumes:
+  sqlserver-data:
