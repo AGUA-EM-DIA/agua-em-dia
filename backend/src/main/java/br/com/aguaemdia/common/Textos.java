@@ -56,4 +56,40 @@ public final class Textos {
         for (int i = 0; i < 8; i++) sb.append(ALFABETO_PROTOCOLO.charAt(RANDOM.nextInt(ALFABETO_PROTOCOLO.length())));
         return sb.toString();
     }
+    
+    /** Valida os 11 dígitos do CPF, incluindo os dígitos verificadores. */
+    public static boolean cpfValido(String cpf) {
+        if (cpf == null) return false;
+
+        String numero = cpf.replaceAll("\\D", "");
+
+        if (!numero.matches("\\d{11}")) return false;
+
+        if (numero.chars().distinct().count() == 1) return false;
+
+        int soma = 0;
+
+        for (int i = 0; i < 9; i++) {
+            soma += Character.getNumericValue(numero.charAt(i)) * (10 - i);
+        }
+
+        int primeiro = (soma * 10) % 11;
+        if (primeiro == 10) primeiro = 0;
+
+        if (primeiro != Character.getNumericValue(numero.charAt(9))) {
+            return false;
+        }
+
+        soma = 0;
+
+        for (int i = 0; i < 10; i++) {
+            soma += Character.getNumericValue(numero.charAt(i)) * (11 - i);
+        }
+
+        int segundo = (soma * 10) % 11;
+        if (segundo == 10) segundo = 0;
+
+        return segundo == Character.getNumericValue(numero.charAt(10));
+    }
+
 }
