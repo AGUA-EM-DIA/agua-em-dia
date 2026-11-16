@@ -70,6 +70,26 @@ public class UsuarioService {
         return email.trim().toLowerCase(Locale.ROOT);
     }
 
+    
+    /** Cria uma conta de cidadão com CPF. */
+    @Transactional
+    public Usuario criarCidadao(String nome, String cpf, String email, String telefone,
+            String senhaClara, String situacao, Collection<String> nomesPapeis, Long por) {
+
+        String documento = cpf.replaceAll("\\D", "");
+
+        if (usuarios.existsByCpf(documento)) {
+            throw ApiException.conflito("CPF já cadastrado.");
+        }
+
+        Usuario usuario = criar(nome, email, telefone, senhaClara, situacao, nomesPapeis, por);
+
+        usuario.setCpf(documento);
+
+        return usuarios.save(usuario);
+    }
+
+
     /** Cria usuário com os papéis informados. situacao: PENDENTE_VERIFICACAO ou ATIVO. */
     @Transactional
     public Usuario criar(String nome, String email, String telefone, String senhaClara, String situacao,
