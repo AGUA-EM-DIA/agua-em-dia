@@ -1,3 +1,4 @@
+
 package br.com.aguaemdia.domain;
 
 import jakarta.persistence.*;
@@ -21,6 +22,9 @@ public class Usuario {
     @Column(name = "email", nullable = false, length = 254)
     private String email;
 
+    @Column(name = "cpf", length = 11)
+    private String cpf;
+
     @Column(name = "telefone", nullable = true, length = 30)
     private String telefone;
 
@@ -41,7 +45,10 @@ public class Usuario {
 
     @PrePersist
     void aoPersistir() {
-        if (criadoEm == null) criadoEm = OffsetDateTime.now(ZoneOffset.UTC).truncatedTo(ChronoUnit.MILLIS);
+        if (criadoEm == null) {
+            criadoEm = OffsetDateTime.now(ZoneOffset.UTC)
+                    .truncatedTo(ChronoUnit.MILLIS);
+        }
     }
 
     public Long getId() { return id; }
@@ -53,6 +60,9 @@ public class Usuario {
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
 
+    public String getCpf() { return cpf; }
+    public void setCpf(String cpf) { this.cpf = cpf; }
+
     public String getTelefone() { return telefone; }
     public void setTelefone(String telefone) { this.telefone = telefone; }
 
@@ -63,11 +73,15 @@ public class Usuario {
     public void setSituacao(String situacao) { this.situacao = situacao; }
 
     public OffsetDateTime getEmailVerificadoEm() { return emailVerificadoEm; }
-    public void setEmailVerificadoEm(OffsetDateTime emailVerificadoEm) { this.emailVerificadoEm = emailVerificadoEm; }
+    public void setEmailVerificadoEm(OffsetDateTime emailVerificadoEm) {
+        this.emailVerificadoEm = emailVerificadoEm;
+    }
 
     public OffsetDateTime getCriadoEm() { return criadoEm; }
     public void setCriadoEm(OffsetDateTime criadoEm) { this.criadoEm = criadoEm; }
 
     public OffsetDateTime getAnonimizadoEm() { return anonimizadoEm; }
-    public void setAnonimizadoEm(OffsetDateTime anonimizadoEm) { this.anonimizadoEm = anonimizadoEm; }
+    public void setAnonimizadoEm(OffsetDateTime anonimizadoEm) {
+        this.anonimizadoEm = anonimizadoEm;
+    }
 }
