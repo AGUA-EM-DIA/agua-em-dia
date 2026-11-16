@@ -56,10 +56,24 @@ public class AuthService {
 
     /** RF001: cadastro de cidadão. A conta só fica ativa depois da confirmação do e-mail. */
     @Transactional
+    
+    /** RF001: cadastro de cidadão com CPF. A conta só fica ativa após confirmação do e-mail. */
+    @Transactional
     public void registrar(RegistroRequest r) {
-        Usuario u = usuarioService.criar(r.nome(), r.email(), r.telefone(), r.senha(),
-                "PENDENTE_VERIFICACAO", List.of(Papeis.CIDADAO), null);
+        Usuario u = usuarioService.criarCidadao(
+                r.nome(),
+                r.cpf(),
+                r.email(),
+                r.telefone(),
+                r.senha(),
+                "PENDENTE_VERIFICACAO",
+                List.of(Papeis.CIDADAO),
+                null
+        );
+
         tokenEmail.enviarVerificacao(u);
+    }
+
     }
 
     @Transactional
