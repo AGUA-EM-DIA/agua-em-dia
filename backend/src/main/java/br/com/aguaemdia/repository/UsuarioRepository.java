@@ -1,3 +1,4 @@
+
 package br.com.aguaemdia.repository;
 
 import br.com.aguaemdia.domain.Usuario;
@@ -14,11 +15,19 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     boolean existsByEmailIgnoreCase(String email);
 
+    Optional<Usuario> findByCpf(String cpf);
+
+    boolean existsByCpf(String cpf);
+
     @Query("""
            select u from Usuario u
            where (:q is null or lower(u.nome) like :q or lower(u.email) like :q)
              and (:situacao is null or u.situacao = :situacao)
            order by u.nome
            """)
-    Page<Usuario> buscar(@Param("q") String q, @Param("situacao") String situacao, Pageable pageable);
+    Page<Usuario> buscar(
+            @Param("q") String q,
+            @Param("situacao") String situacao,
+            Pageable pageable
+    );
 }
