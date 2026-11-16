@@ -1,3 +1,4 @@
+
 package br.com.aguaemdia.service;
 
 import br.com.aguaemdia.common.ApiException;
@@ -70,13 +71,16 @@ public class UsuarioService {
         return email.trim().toLowerCase(Locale.ROOT);
     }
 
-    
     /** Cria uma conta de cidadão com CPF. */
     @Transactional
     public Usuario criarCidadao(String nome, String cpf, String email, String telefone,
             String senhaClara, String situacao, Collection<String> nomesPapeis, Long por) {
 
-        String documento = cpf.replaceAll("\\D", "");
+        String documento = cpf == null ? "" : cpf.replaceAll("\\D", "");
+
+        if (!Textos.cpfValido(documento)) {
+            throw ApiException.invalido("CPF inválido.");
+        }
 
         if (usuarios.existsByCpf(documento)) {
             throw ApiException.conflito("CPF já cadastrado.");
@@ -89,76 +93,136 @@ public class UsuarioService {
         return usuarios.save(usuario);
     }
 
-
     /** Cria usuário com os papéis informados. situacao: PENDENTE_VERIFICACAO ou ATIVO. */
     @Transactional
     public Usuario criar(String nome, String email, String telefone, String senhaClara, String situacao,
             Collection<String> nomesPapeis, Long por) {
         String em = normalizarEmail(email);
-        if (usuarios.existsByEmailIgnoreCase(em)) throw ApiException.conflito("E-mail já cadastrado.");
+        if (usuarios.existsByEmailIgnoreCase(em)) {
+            throw ApiException.conflito("E-mail já cadastrado.");
+        }
+
         Usuario u = new Usuario();
         u.setNome(Textos.truncar(nome.trim(), 150));
         u.setEmail(em);
         u.setTelefone(Textos.truncar(Textos.limpar(telefone), 30));
         u.setSenhaHash(encoder.encode(senhaClara));
         u.setSituacao(situacao);
-        if ("ATIVO".equals(situacao)) u.setEmailVerificadoEm(OffsetDateTime.now(clock));
+
+        if ("ATIVO".equals(situacao)) {
+            u.setEmailVerificadoEm(OffsetDateTime.now(clock));
+        }
+
         u = usuarios.save(u);
-        for (String p : nomesPapeis) concederPapel(u.getId(), p, por);
-        auditoria.registrar(por, "USUARIO_CRIADO", "Usuario", u.getId(), null, Map.of("papeis", nomesPapeis));
+
+        for (String p : nomesPapeis) {
+            concederPapel(u.getId(), p, por);
+        }
+
+        auditoria.registrar(
+                por,
+                "USUARIO_CRIADO",
+                "Usuario",
+                u.getId(),
+                null,
+                Map.of("papeis", nomesPapeis)
+        );
+
         return u;
     }
 
     /** Conta criada por administrador: sem senha conhecida; o convidado define a sua pelo link enviado. */
     @Transactional
     public Usuario convidar(String nome, String email, String telefone, Collection<String> nomesPapeis, Long por) {
-        Usuario u = criar(nome, email, telefone, Textos.tokenAleatorio(), "PENDENTE_VERIFICACAO", nomesPapeis, por);
+        Usuario u = criar(
+                nome,
+                email,
+                telefone,
+                Textos.tokenAleatorio(),
+                "PENDENTE_VERIFICACAO",
+                nomesPapeis,
+                por
+        );
+
         tokenEmail.enviarRecuperacao(u, true);
         return u;
     }
 
     @Transactional
     public void concederPapel(Long usuarioId, String nomePapel, Long por) {
-        Papel p = papeis.findByNome(nomePapel).orElseThrow(() -> ApiException.invalido("Papel inexistente: " + nomePapel));
-        if (usuarioPapeis.findByUsuarioIdAndPapelIdAndRevogadoEmIsNull(usuarioId, p.getId()).isPresent()) return;
+        Papel p = papeis.findByNome(nomePapel)
+                .orElseThrow(() -> ApiException.invalido("Papel inexistente: " + nomePapel));
+
+        if (usuarioPapeis.findByUsuarioIdAndPapelIdAndRevogadoEmIsNull(usuarioId, p.getId()).isPresent()) {
+            return;
+        }
+
         UsuarioPapel up = new UsuarioPapel();
         up.setUsuarioId(usuarioId);
         up.setPapelId(p.getId());
         up.setAtribuidoPor(por);
         usuarioPapeis.save(up);
+
         auditoria.registrar(por, "PAPEL_CONCEDIDO", "Usuario", usuarioId, null, Map.of("papel", nomePapel));
     }
 
     @Transactional
     public void revogarPapel(Long usuarioId, String nomePapel, Long por) {
-        Papel p = papeis.findByNome(nomePapel).orElseThrow(() -> ApiException.invalido("Papel inexistente: " + nomePapel));
+        Papel p = papeis.findByNome(nomePapel)
+                .orElseThrow(() -> ApiException.invalido("Papel inexistente: " + nomePapel));
+
         UsuarioPapel up = usuarioPapeis.findByUsuarioIdAndPapelIdAndRevogadoEmIsNull(usuarioId, p.getId())
                 .orElseThrow(() -> ApiException.naoEncontrado("O usuário não possui este papel."));
-        if (Papeis.ADMINISTRADOR.equals(nomePapel) && usuarioPapeis.contarVigentes(Papeis.ADMINISTRADOR) <= 1) {
+
+        if (Papeis.ADMINISTRADOR.equals(nomePapel)
+                && usuarioPapeis.contarVigentes(Papeis.ADMINISTRADOR) <= 1) {
             throw ApiException.negocio("Não é possível remover o último administrador do sistema.");
         }
+
         up.setRevogadoEm(OffsetDateTime.now(clock));
-        if (Papeis.EQUIPE.equals(nomePapel)) encerrarVinculoEquipe(usuarioId);
-        auditoria.registrar(por, "PAPEL_REVOGADO", "Usuario", usuarioId, Map.of("papel", nomePapel), null);
+
+        if (Papeis.EQUIPE.equals(nomePapel)) {
+            encerrarVinculoEquipe(usuarioId);
+        }
+
+        auditoria.registrar(por, "PAPEL_REVOGADO", "Usuario", usuarioId,
+                Map.of("papel", nomePapel), null);
     }
 
     @Transactional
     public Usuario alterarSituacao(Long id, boolean ativar, Long por) {
         Usuario u = obter(id);
-        if ("ANONIMIZADO".equals(u.getSituacao())) throw ApiException.negocio("Conta anonimizada não pode ser alterada.");
-        if (id.equals(por)) throw ApiException.negocio("Você não pode alterar a própria situação.");
+
+        if ("ANONIMIZADO".equals(u.getSituacao())) {
+            throw ApiException.negocio("Conta anonimizada não pode ser alterada.");
+        }
+
+        if (id.equals(por)) {
+            throw ApiException.negocio("Você não pode alterar a própria situação.");
+        }
+
         String anterior = u.getSituacao();
+
         if (ativar) {
             u.setSituacao("ATIVO");
-            if (u.getEmailVerificadoEm() == null) u.setEmailVerificadoEm(OffsetDateTime.now(clock));
+
+            if (u.getEmailVerificadoEm() == null) {
+                u.setEmailVerificadoEm(OffsetDateTime.now(clock));
+            }
         } else {
-            if (usuarioPapeis.nomesVigentes(id).contains(Papeis.ADMINISTRADOR) && usuarioPapeis.contarVigentes(Papeis.ADMINISTRADOR) <= 1) {
+            if (usuarioPapeis.nomesVigentes(id).contains(Papeis.ADMINISTRADOR)
+                    && usuarioPapeis.contarVigentes(Papeis.ADMINISTRADOR) <= 1) {
                 throw ApiException.negocio("Não é possível desativar o último administrador do sistema.");
             }
+
             u.setSituacao("DESATIVADO");
             encerrarVinculoEquipe(id);
         }
-        auditoria.registrar(por, "SITUACAO_ALTERADA", "Usuario", id, Map.of("situacao", anterior), Map.of("situacao", u.getSituacao()));
+
+        auditoria.registrar(por, "SITUACAO_ALTERADA", "Usuario", id,
+                Map.of("situacao", anterior),
+                Map.of("situacao", u.getSituacao()));
+
         return u;
     }
 
@@ -166,30 +230,49 @@ public class UsuarioService {
     @Transactional
     public void anonimizar(Long id, Long por) {
         Usuario u = obter(id);
-        if ("ANONIMIZADO".equals(u.getSituacao())) return;
-        if (usuarioPapeis.nomesVigentes(id).contains(Papeis.ADMINISTRADOR) && usuarioPapeis.contarVigentes(Papeis.ADMINISTRADOR) <= 1) {
+
+        if ("ANONIMIZADO".equals(u.getSituacao())) {
+            return;
+        }
+
+        if (usuarioPapeis.nomesVigentes(id).contains(Papeis.ADMINISTRADOR)
+                && usuarioPapeis.contarVigentes(Papeis.ADMINISTRADOR) <= 1) {
             throw ApiException.negocio("Não é possível anonimizar o último administrador do sistema.");
         }
+
         OffsetDateTime agora = OffsetDateTime.now(clock);
+
         u.setNome("Usuário anonimizado");
         u.setEmail("anonimizado-" + id + "@anonimizado.invalid");
         u.setTelefone(null);
+        u.setCpf(null);
         u.setSenhaHash(encoder.encode(Textos.tokenAleatorio()));
         u.setSituacao("ANONIMIZADO");
         u.setAnonimizadoEm(agora);
-        for (UsuarioPapel up : usuarioPapeis.findByUsuarioIdAndRevogadoEmIsNull(id)) up.setRevogadoEm(agora);
+
+        for (UsuarioPapel up : usuarioPapeis.findByUsuarioIdAndRevogadoEmIsNull(id)) {
+            up.setRevogadoEm(agora);
+        }
+
         encerrarVinculoEquipe(id);
+
         List<RascunhoRelato> meus = rascunhos.findByUsuarioIdOrderByAtualizadoEmDesc(id);
         rascunhos.deleteAll(meus);
+
         tokensVerificacao.invalidarPendentes(id, agora);
         tokensRecuperacao.invalidarPendentes(id, agora);
+
         auditoria.registrar(por, "USUARIO_ANONIMIZADO", "Usuario", id, null, null);
     }
 
     @Transactional
     public void anonimizarProprio(Long id, String senha) {
         Usuario u = obter(id);
-        if (!encoder.matches(senha, u.getSenhaHash())) throw ApiException.proibido("Senha incorreta.");
+
+        if (!encoder.matches(senha, u.getSenhaHash())) {
+            throw ApiException.proibido("Senha incorreta.");
+        }
+
         anonimizar(id, id);
     }
 
@@ -200,14 +283,22 @@ public class UsuarioService {
 
     @Transactional(readOnly = true)
     public Usuario obter(Long id) {
-        return usuarios.findById(id).orElseThrow(() -> ApiException.naoEncontrado("Usuário não encontrado."));
+        return usuarios.findById(id)
+                .orElseThrow(() -> ApiException.naoEncontrado("Usuário não encontrado."));
     }
 
     @Transactional(readOnly = true)
     public UsuarioResumo resumo(Long id) {
         Usuario u = obter(id);
-        return new UsuarioResumo(u.getId(), u.getNome(), u.getEmail(), u.getTelefone(), u.getSituacao(),
-                new HashSet<>(usuarioPapeis.nomesVigentes(id)));
+
+        return new UsuarioResumo(
+                u.getId(),
+                u.getNome(),
+                u.getEmail(),
+                u.getTelefone(),
+                u.getSituacao(),
+                new HashSet<>(usuarioPapeis.nomesVigentes(id))
+        );
     }
 
     @Transactional
@@ -215,15 +306,26 @@ public class UsuarioService {
         Usuario u = obter(id);
         u.setNome(Textos.truncar(nome.trim(), 150));
         u.setTelefone(Textos.truncar(Textos.limpar(telefone), 30));
+
         return resumo(id);
     }
 
     @Transactional(readOnly = true)
     public Page<UsuarioResumo> listar(String busca, String situacao, Pageable pageable) {
-        String q = Textos.limpar(busca) == null ? null : "%" + busca.trim().toLowerCase(Locale.ROOT) + "%";
+        String q = Textos.limpar(busca) == null
+                ? null
+                : "%" + busca.trim().toLowerCase(Locale.ROOT) + "%";
+
         return usuarios.buscar(q, Textos.limpar(situacao), pageable).map(u ->
-                new UsuarioResumo(u.getId(), u.getNome(), u.getEmail(), u.getTelefone(), u.getSituacao(),
-                        new HashSet<>(usuarioPapeis.nomesVigentes(u.getId()))));
+                new UsuarioResumo(
+                        u.getId(),
+                        u.getNome(),
+                        u.getEmail(),
+                        u.getTelefone(),
+                        u.getSituacao(),
+                        new HashSet<>(usuarioPapeis.nomesVigentes(u.getId()))
+                )
+        );
     }
 
     /** RF004: estatísticas do cidadão (sem dupla contagem de ocorrências agrupadas). */
@@ -232,6 +334,7 @@ public class UsuarioService {
         return new EstatisticasCidadao(
                 relatos.countByUsuarioId(usuarioId),
                 relatos.contarVazamentosDoUsuario(usuarioId, VazamentoStatus.nomes(VazamentoStatus.ATIVOS)),
-                relatos.contarAtendimentosConcluidos(usuarioId));
+                relatos.contarAtendimentosConcluidos(usuarioId)
+        );
     }
 }
