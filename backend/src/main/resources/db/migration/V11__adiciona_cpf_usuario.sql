@@ -1,10 +1,10 @@
 
+
 IF COL_LENGTH('Usuario', 'cpf') IS NULL
 BEGIN
     ALTER TABLE Usuario
     ADD cpf NVARCHAR(11) NULL;
 END;
-GO
 
 IF NOT EXISTS (
     SELECT 1
@@ -17,4 +17,3 @@ BEGIN
     ON Usuario (cpf)
     WHERE cpf IS NOT NULL;
 END;
-GO
