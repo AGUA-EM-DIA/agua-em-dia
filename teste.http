@@ -1,0 +1,104 @@
+### Cadastro de cidadão (CPF precisa ser válido, com os dígitos verificadores)
+POST http://localhost:8080/api/usuarios
+Content-Type: application/json
+
+{
+  "nome": "Maria Silva",
+  "nomeUsuario": "maria123",
+  "cpf": "529.982.247-25",
+  "email": "maria@exemplo.com",
+  "telefone": "(81) 99999-0000",
+  "senha": "Senha1234",
+  "aceitouTermos": true
+}
+
+### Login (somente e-mail e senha). Copie o "token" da resposta para as rotas abaixo
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "maria@exemplo.com",
+  "senha": "Senha1234"
+}
+
+### Meus dados
+GET http://localhost:8080/api/usuarios/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZ3VhLWVtLWRpYSIsInN1YiI6IjIiLCJleHAiOjE3OTU1MjU0MTksImlhdCI6MTc5NTQ4MjIxOX0.RpODg9XEZvirQAdD8xw4PKg3YDhfzckg_zadvTXVSNo
+
+### Minhas estatísticas e conquistas
+GET http://localhost:8080/api/usuarios/me/estatisticas
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZ3VhLWVtLWRpYSIsInN1YiI6IjIiLCJleHAiOjE3OTU1MjU0MTksImlhdCI6MTc5NTQ4MjIxOX0.RpODg9XEZvirQAdD8xw4PKg3YDhfzckg_zadvTXVSNo
+
+
+### Todos os vazamentos (mapa)
+GET http://localhost:8080/api/vazamentos
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZ3VhLWVtLWRpYSIsInN1YiI6IjIiLCJleHAiOjE3OTU1MjU0MTksImlhdCI6MTc5NTQ4MjIxOX0.RpODg9XEZvirQAdD8xw4PKg3YDhfzckg_zadvTXVSNo
+
+
+### Meus vazamentos
+GET http://localhost:8080/api/vazamentos/meus
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZ3VhLWVtLWRpYSIsInN1YiI6IjIiLCJleHAiOjE3OTU1MjU0MTksImlhdCI6MTc5NTQ4MjIxOX0.RpODg9XEZvirQAdD8xw4PKg3YDhfzckg_zadvTXVSNo
+
+
+### Detalhe de um vazamento
+GET http://localhost:8080/api/vazamentos/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZ3VhLWVtLWRpYSIsInN1YiI6IjIiLCJleHAiOjE3OTU1MjU0MTksImlhdCI6MTc5NTQ4MjIxOX0.RpODg9XEZvirQAdD8xw4PKg3YDhfzckg_zadvTXVSNo
+
+
+### Registrar vazamento (multipart: parte "dados" em JSON e parte "foto" opcional)
+POST http://localhost:8080/api/vazamentos
+Authorization: Bearer COLE_O_TOKEN_AQUI
+Content-Type: multipart/form-data; boundary=limite
+
+--limite
+Content-Disposition: form-data; name="dados"
+Content-Type: application/json
+
+{"tipo":"REDE","porte":"MEDIO","descricao":"Água brotando do asfalto","endereco":"Av. Recife, 100","latitude":-8.0745,"longitude":-34.9110}
+--limite--
+
+### Editar descrição (só do próprio registro)
+PATCH http://localhost:8080/api/vazamentos/1/descricao
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZ3VhLWVtLWRpYSIsInN1YiI6IjIiLCJleHAiOjE3OTU1MjU0MTksImlhdCI6MTc5NTQ4MjIxOX0.RpODg9XEZvirQAdD8xw4PKg3YDhfzckg_zadvTXVSNo
+
+Content-Type: application/json
+
+{"descricao": "Continua vazando"}
+
+### "Eu também vi" (reforçar o registro de outra pessoa)
+POST http://localhost:8080/api/vazamentos/1/apoios
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZ3VhLWVtLWRpYSIsInN1YiI6IjIiLCJleHAiOjE3OTU1MjU0MTksImlhdCI6MTc5NTQ4MjIxOX0.RpODg9XEZvirQAdD8xw4PKg3YDhfzckg_zadvTXVSNo
+
+
+### Atualizar situação (sistema autorizado, com a chave de serviço). Valores: REPARO, RESOLVIDO
+PATCH http://localhost:8080/api/vazamentos/1/situacao
+X-Chave-Servico: COLE_A_SERVICE_KEY_AQUI
+Content-Type: application/json
+
+{"situacao": "REPARO"}
+
+### Avaliar o atendimento (só depois de RESOLVIDO)
+POST http://localhost:8080/api/vazamentos/1/avaliacao
+Authorization: Bearer COLE_O_TOKEN_AQUI
+Content-Type: application/json
+
+{"nota": 5, "comentario": "Foi rápido"}
+
+### Aquari
+POST http://localhost:8080/api/aquari/mensagens
+Authorization: Bearer COLE_O_TOKEN_AQUI
+Content-Type: application/json
+
+{"texto": "Como registro um vazamento?"}
+
+### Recuperação de senha: 1) pedir o código
+POST http://localhost:8080/api/auth/recuperacao
+Content-Type: application/json
+
+{"email": "maria@exemplo.com"}
+
+### Recuperação de senha: 2) usar o código
+POST http://localhost:8080/api/auth/redefinir-senha
+Content-Type: application/json
+
+{"email": "maria@exemplo.com", "codigo": "123456", "novaSenha": "NovaSenha567"}

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script>try{var __t=localStorage.getItem("aed_tema");if(__t==="escuro")document.documentElement.setAttribute("data-tema","escuro");}catch(e){}</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20200%20240%22%3E%3Cpath%20d%3D%22M100%20231%20C61%20180%2022%20141%2022%20101%20a78%2078%200%201%201%20156%200%20c0%2040%20-39%2079%20-78%20130%20Z%22%20fill%3D%22none%22%20stroke%3D%22%2363B8EC%22%20stroke-width%3D%2214%22/%3E%3Cpath%20d%3D%22M100%2028%20C100%2028%2046%20102%2046%20128%20a54%2054%200%201%200%20108%200%20C154%20102%20100%2028%20100%2028%20Z%22%20fill%3D%22none%22%20stroke%3D%22%23164C86%22%20stroke-width%3D%2214%22/%3E%3C/svg%3E">
+<title>Água em Dia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css">
+</head>
+
+<a href="#conteudo-principal" class="pular-link">Pular para o conteúdo</a>
+<header class="topo">
+  <div class="marca">
+    <svg class="marca-svg" viewBox="0 0 200 240" width="40" height="48" aria-hidden="true"><defs><linearGradient id="gotaGradA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ED2F2"/>
+      <stop offset="1" stop-color="#2E62A8"/>
+    </linearGradient>
+    <mask id="furoGotaA">
+      <rect x="0" y="0" width="200" height="240" fill="#fff"/>
+      <path d="M107 50 C107 50 65 104 65 129 a41 41 0 1 0 82 0 C147 104 107 50 107 50 Z" fill="#000"/>
+    </mask></defs><!-- pino: contorno externo -->
+  <path d="M100 231 C61 180 22 141 22 101 a78 78 0 1 1 156 0 c0 40 -39 79 -78 130 Z"
+        fill="none" stroke="#6CADDF" stroke-width="11" stroke-linejoin="round"/>
+
+  <!-- gota interna, vazada por máscara (traço mais grosso à esquerda) -->
+  <path d="M100 28 C100 28 46 102 46 128 a54 54 0 1 0 108 0 C154 102 100 28 100 28 Z"
+        fill="url(#gotaGradA)" mask="url(#furoGotaA)"/>
+
+  <!-- reflexo interno -->
+  <path d="M82 138 a28 28 0 0 0 25 26" fill="none" stroke="#7FC8EC"
+        stroke-width="6" stroke-linecap="round"/></svg>
+    <div>
+      <svg class="marca-texto" viewBox="0 0 650 118" width="169" height="31" role="img" aria-label="Água em Dia"><g transform="translate(0 96)" fill="#EDF2F1"><path d="M49.400000000000006 -14.200000000000001H20.3L15.3 0.0H3.4000000000000004L28.3 -69.60000000000001H41.5L66.4 0.0H54.400000000000006ZM46.2 -23.5 34.9 -55.800000000000004 23.5 -23.5ZM45.2 -84.4 23.1 -73.5V-81.9L45.2 -94.10000000000001Z M118.5 -47.1V-55.1H130.0V0.9Q130.0 8.5 126.80000000000001 14.450000000000001Q123.60000000000001 20.400000000000002 117.55000000000001 23.800000000000004Q111.5 27.200000000000003 103.1 27.200000000000003Q91.9 27.200000000000003 84.5 21.950000000000003Q77.10000000000001 16.7 76.10000000000001 7.7H87.4Q88.7 12.0 92.95 14.65Q97.2 17.3 103.1 17.3Q110.0 17.3 114.25 13.100000000000001Q118.5 8.9 118.5 0.9V-8.3Q115.60000000000001 -4.4 110.65 -1.7500000000000002Q105.7 0.9 99.4 0.9Q92.2 0.9 86.25 -2.75Q80.30000000000001 -6.4 76.85000000000001 -12.95Q73.4 -19.5 73.4 -27.8Q73.4 -36.1 76.85000000000001 -42.5Q80.30000000000001 -48.900000000000006 86.25 -52.45Q92.2 -56.0 99.4 -56.0Q105.80000000000001 -56.0 110.75 -53.45Q115.7 -50.900000000000006 118.5 -47.1ZM101.80000000000001 -46.1Q97.4 -46.1 93.60000000000001 -43.95Q89.80000000000001 -41.800000000000004 87.45000000000002 -37.650000000000006Q85.10000000000001 -33.5 85.10000000000001 -27.8Q85.10000000000001 -22.1 87.45000000000002 -17.8Q89.80000000000001 -13.5 93.65 -11.25Q97.5 -9.0 101.80000000000001 -9.0Q106.2 -9.0 110.0 -11.2Q113.80000000000001 -13.4 116.15 -17.650000000000002Q118.5 -21.900000000000002 118.5 -27.6Q118.5 -33.300000000000004 116.15 -37.5Q113.80000000000001 -41.7 110.0 -43.900000000000006Q106.2 -46.1 101.80000000000001 -46.1Z M194.9 -55.1V0.0H183.5V-6.5Q180.8 -3.1 176.45 -1.15Q172.1 0.8 167.2 0.8Q160.7 0.8 155.55 -1.9000000000000004Q150.4 -4.6000000000000005 147.45 -9.9Q144.5 -15.200000000000001 144.5 -22.700000000000003V-55.1H155.8V-24.400000000000002Q155.8 -17.0 159.5 -13.05Q163.2 -9.1 169.6 -9.1Q176.0 -9.1 179.75 -13.05Q183.5 -17.0 183.5 -24.400000000000002V-55.1Z M232.10000000000002 -56.0Q238.60000000000002 -56.0 243.45000000000002 -53.45Q248.3 -50.900000000000006 251.20000000000002 -47.1V-55.1H262.7V0.0H251.20000000000002V-8.200000000000001Q248.3 -4.3 243.3 -1.7Q238.3 0.9 231.9 0.9Q224.8 0.9 218.9 -2.75Q213.0 -6.4 209.55 -12.95Q206.1 -19.5 206.1 -27.8Q206.1 -36.1 209.55 -42.5Q213.0 -48.900000000000006 218.95 -52.45Q224.9 -56.0 232.10000000000002 -56.0ZM234.5 -46.1Q230.10000000000002 -46.1 226.3 -43.95Q222.5 -41.800000000000004 220.15 -37.650000000000006Q217.8 -33.5 217.8 -27.8Q217.8 -22.1 220.15 -17.8Q222.5 -13.5 226.35000000000002 -11.25Q230.20000000000002 -9.0 234.5 -9.0Q238.9 -9.0 242.7 -11.2Q246.5 -13.4 248.85000000000002 -17.650000000000002Q251.20000000000002 -21.900000000000002 251.20000000000002 -27.6Q251.20000000000002 -33.300000000000004 248.85000000000002 -37.5Q246.5 -41.7 242.7 -43.900000000000006Q238.9 -46.1 234.5 -46.1Z M353.8 -23.3H311.7Q312.2 -16.7 316.6 -12.7Q321.0 -8.700000000000001 327.4 -8.700000000000001Q336.6 -8.700000000000001 340.4 -16.400000000000002H352.7Q350.2 -8.8 343.65 -3.95Q337.1 0.9 327.4 0.9Q319.5 0.9 313.25 -2.65Q307.0 -6.2 303.45 -12.65Q299.9 -19.1 299.9 -27.6Q299.9 -36.1 303.35 -42.55Q306.8 -49.0 313.05 -52.5Q319.3 -56.0 327.4 -56.0Q335.2 -56.0 341.29999999999995 -52.6Q347.4 -49.2 350.79999999999995 -43.05Q354.2 -36.9 354.2 -28.900000000000002Q354.2 -25.8 353.8 -23.3ZM342.3 -32.5Q342.2 -38.800000000000004 337.79999999999995 -42.60000000000001Q333.4 -46.400000000000006 326.9 -46.400000000000006Q321.0 -46.400000000000006 316.79999999999995 -42.650000000000006Q312.59999999999997 -38.900000000000006 311.8 -32.5Z M454.79999999999995 -32.5V0.0H443.5V-30.8Q443.5 -38.2 439.79999999999995 -42.150000000000006Q436.09999999999997 -46.1 429.7 -46.1Q423.29999999999995 -46.1 419.54999999999995 -42.150000000000006Q415.79999999999995 -38.2 415.79999999999995 -30.8V0.0H404.5V-30.8Q404.5 -38.2 400.79999999999995 -42.150000000000006Q397.09999999999997 -46.1 390.7 -46.1Q384.29999999999995 -46.1 380.54999999999995 -42.150000000000006Q376.79999999999995 -38.2 376.79999999999995 -30.8V0.0H365.4V-55.1H376.79999999999995V-48.800000000000004Q379.59999999999997 -52.2 383.9 -54.1Q388.2 -56.0 393.09999999999997 -56.0Q399.7 -56.0 404.9 -53.2Q410.09999999999997 -50.400000000000006 412.9 -45.1Q415.4 -50.1 420.7 -53.05Q426.0 -56.0 432.09999999999997 -56.0Q438.59999999999997 -56.0 443.75 -53.3Q448.9 -50.6 451.84999999999997 -45.3Q454.79999999999995 -40.0 454.79999999999995 -32.5Z M517.5999999999999 -56.0Q523.0 -56.0 528.25 -53.650000000000006Q533.5 -51.300000000000004 536.5999999999999 -47.400000000000006V-74.0H548.0999999999999V0.0H536.5999999999999V-8.3Q533.8 -4.3 528.8499999999999 -1.7Q523.9 0.9 517.5 0.9Q510.29999999999995 0.9 504.34999999999997 -2.75Q498.4 -6.4 494.94999999999993 -12.95Q491.49999999999994 -19.5 491.49999999999994 -27.8Q491.49999999999994 -36.1 494.94999999999993 -42.5Q498.4 -48.900000000000006 504.34999999999997 -52.45Q510.29999999999995 -56.0 517.5999999999999 -56.0ZM519.9 -46.1Q515.5 -46.1 511.7 -43.95Q507.9 -41.800000000000004 505.54999999999995 -37.650000000000006Q503.19999999999993 -33.5 503.19999999999993 -27.8Q503.19999999999993 -22.1 505.54999999999995 -17.8Q507.9 -13.5 511.74999999999994 -11.25Q515.5999999999999 -9.0 519.9 -9.0Q524.3 -9.0 528.0999999999999 -11.2Q531.9 -13.4 534.25 -17.650000000000002Q536.5999999999999 -21.900000000000002 536.5999999999999 -27.6Q536.5999999999999 -33.300000000000004 534.25 -37.5Q531.9 -41.7 528.0999999999999 -43.900000000000006Q524.3 -46.1 519.9 -46.1Z M561.5999999999999 -69.7Q561.5999999999999 -72.8 563.6999999999999 -74.9Q565.8 -77.0 568.8999999999999 -77.0Q571.8999999999999 -77.0 573.9999999999999 -74.9Q576.0999999999999 -72.8 576.0999999999999 -69.7Q576.0999999999999 -66.60000000000001 573.9999999999999 -64.5Q571.8999999999999 -62.400000000000006 568.8999999999999 -62.400000000000006Q565.8 -62.400000000000006 563.6999999999999 -64.5Q561.5999999999999 -66.60000000000001 561.5999999999999 -69.7ZM574.4999999999999 -55.1V0.0H563.0999999999999V-55.1Z M611.6999999999999 -56.0Q618.1999999999999 -56.0 623.05 -53.45Q627.8999999999999 -50.900000000000006 630.7999999999998 -47.1V-55.1H642.2999999999998V0.0H630.7999999999998V-8.200000000000001Q627.8999999999999 -4.3 622.8999999999999 -1.7Q617.8999999999999 0.9 611.4999999999999 0.9Q604.3999999999999 0.9 598.4999999999999 -2.75Q592.5999999999999 -6.4 589.1499999999999 -12.95Q585.6999999999999 -19.5 585.6999999999999 -27.8Q585.6999999999999 -36.1 589.1499999999999 -42.5Q592.5999999999999 -48.900000000000006 598.55 -52.45Q604.4999999999999 -56.0 611.6999999999999 -56.0ZM614.0999999999999 -46.1Q609.6999999999999 -46.1 605.8999999999999 -43.95Q602.0999999999999 -41.800000000000004 599.7499999999999 -37.650000000000006Q597.3999999999999 -33.5 597.3999999999999 -27.8Q597.3999999999999 -22.1 599.7499999999999 -17.8Q602.0999999999999 -13.5 605.9499999999998 -11.25Q609.7999999999998 -9.0 614.0999999999999 -9.0Q618.4999999999999 -9.0 622.3 -11.2Q626.0999999999999 -13.4 628.4499999999998 -17.650000000000002Q630.7999999999998 -21.900000000000002 630.7999999999998 -27.6Q630.7999999999998 -33.300000000000004 628.4499999999998 -37.5Q626.0999999999999 -41.7 622.3 -43.900000000000006Q618.4999999999999 -46.1 614.0999999999999 -46.1Z"/></g></svg>
+      <p>Cada vazamento na rua tem hora para acabar.</p>
+    </div>
+  </div>
+
+  <div class="abas" role="tablist">
+    <span class="indicador" id="indicadorAba"></span>
+    <button role="tab" id="aba-app" aria-selected="true" onclick="trocarVista('app')">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg>
+      App do cidadão
+    </button>
+    <button role="tab" id="aba-op" aria-selected="false" onclick="trocarVista('op')">
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+      Painel de operação
+    </button>
+  </div>
+
+  <div class="medidor">
+    <span class="n num" id="medidorTopo">0</span>
+    <span class="l">litros perdidos desde que você abriu a tela</span>
+  </div>
+  <button type="button" class="btn-tema" onclick="alternarTema()" aria-label="Alternar tema claro e escuro" title="Alternar tema: azul-céu / preto e dourado">
+      <svg class="ico ico-lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+      <svg class="ico ico-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>
+    </button>
+</header>
+<div class="onda-topo" aria-hidden="true">
+  <svg class="onda-fundo" viewBox="0 0 800 26" preserveAspectRatio="none">
+    <path d="M0,16 C100,4 100,28 200,16 C300,4 300,28 400,16 C500,4 500,28 600,16 C700,4 700,28 800,16"
+          fill="none" stroke="#2E62A8" stroke-width="3"/>
+  </svg>
+  <svg class="onda-frente" viewBox="0 0 800 26" preserveAspectRatio="none">
+    <path d="M0,14 C80,22 120,4 200,14 C280,22 320,4 400,14 C480,22 520,4 600,14 C680,22 720,4 800,14"
+          fill="none" stroke="#6CADDF" stroke-width="2"/>
+  </svg>
+</div>
+
+<div class="ralo-fundo" id="raloFundo" aria-hidden="true"><div class="ralo-malha"><i class="rb1"></i><i class="rb2"></i><i class="rb3"></i></div></div>
+<div class="agua-fundo" id="aguaFundo" aria-hidden="true">
+  <div class="agua-corpo" id="aguaCorpo">
+    <svg class="onda onda-a" viewBox="0 0 2400 120" preserveAspectRatio="none"><path d="M0 60 C200 20 400 100 600 60 S1000 20 1200 60 S1600 100 1800 60 S2200 20 2400 60 V120 H0Z"/></svg>
+    <svg class="onda onda-b" viewBox="0 0 2400 120" preserveAspectRatio="none"><path d="M0 70 C300 100 500 30 800 70 S1100 100 1200 70 S1700 30 2000 70 S2300 100 2400 70 V120 H0Z"/></svg>
+    <span class="bolha b1"></span><span class="bolha b2"></span><span class="bolha b3"></span><span class="bolha b4"></span><span class="bolha b5"></span><span class="bolha b6"></span><span class="bolha b7"></span><span class="bolha b8"></span><span class="bolha b9"></span><span class="bolha b10"></span><span class="bolha b11"></span><span class="bolha b12"></span>
+    <svg class="onda onda-c" viewBox="0 0 2400 120" preserveAspectRatio="none"><path d="M0 50 C150 90 350 10 600 50 S950 90 1200 50 S1550 10 1800 50 S2150 90 2400 50 V120 H0Z"/></svg><span class="brilho"></span>
+  </div>
+</div>
+<div class="rolagem-barra" id="rolagemBarra" aria-hidden="true"></div>
+<main class="palco" id="conteudo-principal" tabindex="-1">
+
+  <!-- ============ VISTA 1 — APP ============ -->
+  <section id="vista-app" class="cidadao">
+    <div class="palco-fone" id="palcoFone">
+    <div class="fone">
+      <span class="entalhe"></span>
+      <div class="so-home" id="soHome" aria-label="Tela inicial do celular" inert>
+        <div class="enche" aria-hidden="true"><div class="enche-corpo"><svg class="onda-w w3" viewBox="0 0 800 60" preserveAspectRatio="none"><path d="M0 30 C100 6 200 54 300 30 S500 6 600 30 S700 54 800 30 V60 H0Z"/></svg><svg class="onda-w w2" viewBox="0 0 800 60" preserveAspectRatio="none"><path d="M0 30 C100 6 200 54 300 30 S500 6 600 30 S700 54 800 30 V60 H0Z"/></svg><svg class="onda-w w1" viewBox="0 0 800 60" preserveAspectRatio="none"><path d="M0 30 C100 6 200 54 300 30 S500 6 600 30 S700 54 800 30 V60 H0Z"/></svg><span class="brilho-w"></span><i class="eb e1"></i><i class="eb e2"></i><i class="eb e3"></i><i class="eb e4"></i><i class="eb e5"></i><i class="eb e6"></i><i class="eb e7"></i><i class="eb e8"></i><i class="eb e9"></i><i class="eb e10"></i></div></div>
+        <div class="barra-status"><span>69:67</span><span>Flamengo · 4L</span></div>
+        <div class="home-relogio"><b id="homeHora">--:--</b><span id="homeData"></span></div>
+        <div class="home-apps">
+          <button type="button" class="app-icone" id="icoZap" onclick="abrirApp('zap')" aria-label="Abrir o WhatsApp">
+            <span class="ic ic-zap"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-4A8 8 0 1 1 8.2 18.8L4 20Z"/><path d="M9 9.5c.4 2 2.5 4.2 4.8 4.8l1.2-1.2-1.7-1-.8.7c-.9-.4-1.7-1.2-2.1-2.1l.7-.8-1-1.7L9 9.5Z"/></svg><i class="ic-badge" id="zapBadgeIcone" hidden></i></span><span class="rot">WhatsApp</span></button>
+          <button type="button" class="app-icone" id="icoAgua" onclick="abrirApp('agua')" aria-label="Abrir o app Água em Dia">
+            <span class="ic ic-agua"><img src="data:image/svg+xml;utf8,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20200%20200%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22f%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%234DB4FA%22/%3E%3Cstop%20offset=%22.6%22%20stop-color=%22%231B6CC4%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23082B66%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id=%22p%22%20x1=%220%22%20y1=%220%22%20x2=%220%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23FFFFFF%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23CBE9FF%22/%3E%3C/linearGradient%3E%3ClinearGradient%20id=%22g%22%20x1=%22.2%22%20y1=%220%22%20x2=%22.8%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23FFFFFF%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23A9DAFB%22/%3E%3C/linearGradient%3E%3CradialGradient%20id=%22r%22%20cx=%22.3%22%20cy=%22.1%22%20r=%22.9%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23fff%22%20stop-opacity=%22.28%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23fff%22%20stop-opacity=%220%22/%3E%3C/radialGradient%3E%3Cfilter%20id=%22b%22%20x=%22-30%25%22%20y=%22-30%25%22%20width=%22160%25%22%20height=%22160%25%22%3E%3CfeGaussianBlur%20stdDeviation=%229%22/%3E%3C/filter%3E%3C/defs%3E%3Crect%20width=%22200%22%20height=%22200%22%20fill=%22url%28%23f%29%22/%3E%3Crect%20width=%22200%22%20height=%22200%22%20fill=%22url%28%23r%29%22/%3E%3Cg%20transform=%22translate%2836%2012%29%20scale%28.72%29%22%3E%3Cpath%20d=%22M100%20231C61%20180%2022%20141%2022%20101a78%2078%200%201%201%20156%200c0%2040-39%2079-78%20130Z%22%20transform=%22translate%280%2012%29%22%20fill=%22%2302194A%22%20opacity=%22.5%22%20filter=%22url%28%23b%29%22/%3E%3Cpath%20d=%22M100%20231C61%20180%2022%20141%2022%20101a78%2078%200%201%201%20156%200c0%2040-39%2079-78%20130Z%22%20fill=%22none%22%20stroke=%22url%28%23p%29%22%20stroke-width=%2215%22%20stroke-linejoin=%22round%22/%3E%3Cpath%20d=%22M100%2050C100%2050%2056%20106%2056%20131a44%2044%200%200%200%2088%200C144%20106%20100%2050%20100%2050Z%22%20fill=%22url%28%23g%29%22/%3E%3Cpath%20d=%22M80%20140a26%2026%200%200%200%2024%2027%22%20fill=%22none%22%20stroke=%22%232A8BE0%22%20stroke-width=%228%22%20stroke-linecap=%22round%22/%3E%3Cpath%20d=%22M82%20112C86%20102%2092%2094%2098%2086%22%20fill=%22none%22%20stroke=%22%23fff%22%20stroke-width=%226%22%20stroke-linecap=%22round%22%20opacity=%22.9%22/%3E%3C/g%3E%3C/svg%3E" alt=""></span><span class="rot">Água em Dia</span></button>
+          <button type="button" class="app-icone" id="icoGmail" onclick="abrirApp('gmail')" aria-label="Abrir o Gmail">
+            <span class="ic ic-gmail"><svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M6 13.5V35a2 2 0 0 0 2 2h6V20.5z"/><path fill="#34A853" d="M42 13.5V35a2 2 0 0 1-2 2h-6V20.5z"/><path fill="#FBBC04" d="M42 13.5V11a2 2 0 0 0-1-1.7L34 14v6.5z"/><path fill="#EA4335" d="M6 13.5V11a2 2 0 0 1 3.2-1.6L24 20.2 38.8 9.4A2 2 0 0 1 42 11v2.5L24 27z"/><path fill="#C5221F" d="M6 13.5 14 20.5v-6.2L9.2 9.4A2 2 0 0 0 6 11z"/></svg><i class="ic-badge" id="gmailBadgeIcone" hidden></i></span><span class="rot">Gmail</span></button>
+        </div>
+        <p class="home-dica">Toque num app para abrir</p>
+      </div>
+      <div class="app-janela" id="appAgua" inert>
+      <div class="barra-status"><span>69:67</span><span>Flamengo · 4L</span></div>
+      <div class="fone-topo">
+        <span class="marca-fone"><svg class="marca-svg" viewBox="0 0 200 240" width="22" height="26" aria-hidden="true"><defs><linearGradient id="gotaGradB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8ED2F2"/>
+      <stop offset="1" stop-color="#2E62A8"/>
+    </linearGradient>
+    <mask id="furoGotaB">
+      <rect x="0" y="0" width="200" height="240" fill="#fff"/>
+      <path d="M107 50 C107 50 65 104 65 129 a41 41 0 1 0 82 0 C147 104 107 50 107 50 Z" fill="#000"/>
+    </mask></defs><!-- pino: contorno externo -->
+  <path d="M100 231 C61 180 22 141 22 101 a78 78 0 1 1 156 0 c0 40 -39 79 -78 130 Z"
+        fill="none" stroke="#6CADDF" stroke-width="11" stroke-linejoin="round"/>
+
+  <!-- gota interna, vazada por máscara (traço mais grosso à esquerda) -->
+  <path d="M100 28 C100 28 46 102 46 128 a54 54 0 1 0 108 0 C154 102 100 28 100 28 Z"
+        fill="url(#gotaGradB)" mask="url(#furoGotaB)"/>
+
+  <!-- reflexo interno -->
+  <path d="M82 138 a28 28 0 0 0 25 26" fill="none" stroke="#7FC8EC"
+        stroke-width="6" stroke-linecap="round"/></svg><svg class="marca-texto" viewBox="0 0 650 118" width="98" height="18" role="img" aria-label="Água em Dia"><g transform="translate(0 96)" fill="#EDF2F1"><path d="M49.400000000000006 -14.200000000000001H20.3L15.3 0.0H3.4000000000000004L28.3 -69.60000000000001H41.5L66.4 0.0H54.400000000000006ZM46.2 -23.5 34.9 -55.800000000000004 23.5 -23.5ZM45.2 -84.4 23.1 -73.5V-81.9L45.2 -94.10000000000001Z M118.5 -47.1V-55.1H130.0V0.9Q130.0 8.5 126.80000000000001 14.450000000000001Q123.60000000000001 20.400000000000002 117.55000000000001 23.800000000000004Q111.5 27.200000000000003 103.1 27.200000000000003Q91.9 27.200000000000003 84.5 21.950000000000003Q77.10000000000001 16.7 76.10000000000001 7.7H87.4Q88.7 12.0 92.95 14.65Q97.2 17.3 103.1 17.3Q110.0 17.3 114.25 13.100000000000001Q118.5 8.9 118.5 0.9V-8.3Q115.60000000000001 -4.4 110.65 -1.7500000000000002Q105.7 0.9 99.4 0.9Q92.2 0.9 86.25 -2.75Q80.30000000000001 -6.4 76.85000000000001 -12.95Q73.4 -19.5 73.4 -27.8Q73.4 -36.1 76.85000000000001 -42.5Q80.30000000000001 -48.900000000000006 86.25 -52.45Q92.2 -56.0 99.4 -56.0Q105.80000000000001 -56.0 110.75 -53.45Q115.7 -50.900000000000006 118.5 -47.1ZM101.80000000000001 -46.1Q97.4 -46.1 93.60000000000001 -43.95Q89.80000000000001 -41.800000000000004 87.45000000000002 -37.650000000000006Q85.10000000000001 -33.5 85.10000000000001 -27.8Q85.10000000000001 -22.1 87.45000000000002 -17.8Q89.80000000000001 -13.5 93.65 -11.25Q97.5 -9.0 101.80000000000001 -9.0Q106.2 -9.0 110.0 -11.2Q113.80000000000001 -13.4 116.15 -17.650000000000002Q118.5 -21.900000000000002 118.5 -27.6Q118.5 -33.300000000000004 116.15 -37.5Q113.80000000000001 -41.7 110.0 -43.900000000000006Q106.2 -46.1 101.80000000000001 -46.1Z M194.9 -55.1V0.0H183.5V-6.5Q180.8 -3.1 176.45 -1.15Q172.1 0.8 167.2 0.8Q160.7 0.8 155.55 -1.9000000000000004Q150.4 -4.6000000000000005 147.45 -9.9Q144.5 -15.200000000000001 144.5 -22.700000000000003V-55.1H155.8V-24.400000000000002Q155.8 -17.0 159.5 -13.05Q163.2 -9.1 169.6 -9.1Q176.0 -9.1 179.75 -13.05Q183.5 -17.0 183.5 -24.400000000000002V-55.1Z M232.10000000000002 -56.0Q238.60000000000002 -56.0 243.45000000000002 -53.45Q248.3 -50.900000000000006 251.20000000000002 -47.1V-55.1H262.7V0.0H251.20000000000002V-8.200000000000001Q248.3 -4.3 243.3 -1.7Q238.3 0.9 231.9 0.9Q224.8 0.9 218.9 -2.75Q213.0 -6.4 209.55 -12.95Q206.1 -19.5 206.1 -27.8Q206.1 -36.1 209.55 -42.5Q213.0 -48.900000000000006 218.95 -52.45Q224.9 -56.0 232.10000000000002 -56.0ZM234.5 -46.1Q230.10000000000002 -46.1 226.3 -43.95Q222.5 -41.800000000000004 220.15 -37.650000000000006Q217.8 -33.5 217.8 -27.8Q217.8 -22.1 220.15 -17.8Q222.5 -13.5 226.35000000000002 -11.25Q230.20000000000002 -9.0 234.5 -9.0Q238.9 -9.0 242.7 -11.2Q246.5 -13.4 248.85000000000002 -17.650000000000002Q251.20000000000002 -21.900000000000002 251.20000000000002 -27.6Q251.20000000000002 -33.300000000000004 248.85000000000002 -37.5Q246.5 -41.7 242.7 -43.900000000000006Q238.9 -46.1 234.5 -46.1Z M353.8 -23.3H311.7Q312.2 -16.7 316.6 -12.7Q321.0 -8.700000000000001 327.4 -8.700000000000001Q336.6 -8.700000000000001 340.4 -16.400000000000002H352.7Q350.2 -8.8 343.65 -3.95Q337.1 0.9 327.4 0.9Q319.5 0.9 313.25 -2.65Q307.0 -6.2 303.45 -12.65Q299.9 -19.1 299.9 -27.6Q299.9 -36.1 303.35 -42.55Q306.8 -49.0 313.05 -52.5Q319.3 -56.0 327.4 -56.0Q335.2 -56.0 341.29999999999995 -52.6Q347.4 -49.2 350.79999999999995 -43.05Q354.2 -36.9 354.2 -28.900000000000002Q354.2 -25.8 353.8 -23.3ZM342.3 -32.5Q342.2 -38.800000000000004 337.79999999999995 -42.60000000000001Q333.4 -46.400000000000006 326.9 -46.400000000000006Q321.0 -46.400000000000006 316.79999999999995 -42.650000000000006Q312.59999999999997 -38.900000000000006 311.8 -32.5Z M454.79999999999995 -32.5V0.0H443.5V-30.8Q443.5 -38.2 439.79999999999995 -42.150000000000006Q436.09999999999997 -46.1 429.7 -46.1Q423.29999999999995 -46.1 419.54999999999995 -42.150000000000006Q415.79999999999995 -38.2 415.79999999999995 -30.8V0.0H404.5V-30.8Q404.5 -38.2 400.79999999999995 -42.150000000000006Q397.09999999999997 -46.1 390.7 -46.1Q384.29999999999995 -46.1 380.54999999999995 -42.150000000000006Q376.79999999999995 -38.2 376.79999999999995 -30.8V0.0H365.4V-55.1H376.79999999999995V-48.800000000000004Q379.59999999999997 -52.2 383.9 -54.1Q388.2 -56.0 393.09999999999997 -56.0Q399.7 -56.0 404.9 -53.2Q410.09999999999997 -50.400000000000006 412.9 -45.1Q415.4 -50.1 420.7 -53.05Q426.0 -56.0 432.09999999999997 -56.0Q438.59999999999997 -56.0 443.75 -53.3Q448.9 -50.6 451.84999999999997 -45.3Q454.79999999999995 -40.0 454.79999999999995 -32.5Z M517.5999999999999 -56.0Q523.0 -56.0 528.25 -53.650000000000006Q533.5 -51.300000000000004 536.5999999999999 -47.400000000000006V-74.0H548.0999999999999V0.0H536.5999999999999V-8.3Q533.8 -4.3 528.8499999999999 -1.7Q523.9 0.9 517.5 0.9Q510.29999999999995 0.9 504.34999999999997 -2.75Q498.4 -6.4 494.94999999999993 -12.95Q491.49999999999994 -19.5 491.49999999999994 -27.8Q491.49999999999994 -36.1 494.94999999999993 -42.5Q498.4 -48.900000000000006 504.34999999999997 -52.45Q510.29999999999995 -56.0 517.5999999999999 -56.0ZM519.9 -46.1Q515.5 -46.1 511.7 -43.95Q507.9 -41.800000000000004 505.54999999999995 -37.650000000000006Q503.19999999999993 -33.5 503.19999999999993 -27.8Q503.19999999999993 -22.1 505.54999999999995 -17.8Q507.9 -13.5 511.74999999999994 -11.25Q515.5999999999999 -9.0 519.9 -9.0Q524.3 -9.0 528.0999999999999 -11.2Q531.9 -13.4 534.25 -17.650000000000002Q536.5999999999999 -21.900000000000002 536.5999999999999 -27.6Q536.5999999999999 -33.300000000000004 534.25 -37.5Q531.9 -41.7 528.0999999999999 -43.900000000000006Q524.3 -46.1 519.9 -46.1Z M561.5999999999999 -69.7Q561.5999999999999 -72.8 563.6999999999999 -74.9Q565.8 -77.0 568.8999999999999 -77.0Q571.8999999999999 -77.0 573.9999999999999 -74.9Q576.0999999999999 -72.8 576.0999999999999 -69.7Q576.0999999999999 -66.60000000000001 573.9999999999999 -64.5Q571.8999999999999 -62.400000000000006 568.8999999999999 -62.400000000000006Q565.8 -62.400000000000006 563.6999999999999 -64.5Q561.5999999999999 -66.60000000000001 561.5999999999999 -69.7ZM574.4999999999999 -55.1V0.0H563.0999999999999V-55.1Z M611.6999999999999 -56.0Q618.1999999999999 -56.0 623.05 -53.45Q627.8999999999999 -50.900000000000006 630.7999999999998 -47.1V-55.1H642.2999999999998V0.0H630.7999999999998V-8.200000000000001Q627.8999999999999 -4.3 622.8999999999999 -1.7Q617.8999999999999 0.9 611.4999999999999 0.9Q604.3999999999999 0.9 598.4999999999999 -2.75Q592.5999999999999 -6.4 589.1499999999999 -12.95Q585.6999999999999 -19.5 585.6999999999999 -27.8Q585.6999999999999 -36.1 589.1499999999999 -42.5Q592.5999999999999 -48.900000000000006 598.55 -52.45Q604.4999999999999 -56.0 611.6999999999999 -56.0ZM614.0999999999999 -46.1Q609.6999999999999 -46.1 605.8999999999999 -43.95Q602.0999999999999 -41.800000000000004 599.7499999999999 -37.650000000000006Q597.3999999999999 -33.5 597.3999999999999 -27.8Q597.3999999999999 -22.1 599.7499999999999 -17.8Q602.0999999999999 -13.5 605.9499999999998 -11.25Q609.7999999999998 -9.0 614.0999999999999 -9.0Q618.4999999999999 -9.0 622.3 -11.2Q626.0999999999999 -13.4 628.4499999999998 -17.650000000000002Q630.7999999999998 -21.900000000000002 630.7999999999998 -27.6Q630.7999999999998 -33.300000000000004 628.4499999999998 -37.5Q626.0999999999999 -41.7 622.3 -43.900000000000006Q618.4999999999999 -46.1 614.0999999999999 -46.1Z"/></g></svg></span>
+        <span class="saudacao"><span class="avatar" id="avatarTopo">VI</span><span id="nomeTopo">Visitante</span></span>
+      </div>
+      <div class="fone-corpo" id="foneCorpo"></div>
+      <nav class="nav-app" id="navApp"></nav>
+      <div id="entrada" class="entrada" role="dialog" aria-modal="true" aria-label="Entrada no Água em Dia">
+  <section id="telaIntro" class="ent-tela intro" onclick="pularIntro()">
+    <div class="intro-logo">
+      <svg viewBox="0 0 200 240" width="150" height="180" aria-hidden="true">
+        <defs>
+          <linearGradient id="gotaIntroGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8ED2F2"/><stop offset="1" stop-color="#2E62A8"/>
+          </linearGradient>
+          <clipPath id="clipGotaIntro"><path d="M100 28 C100 28 46 102 46 128 a54 54 0 1 0 108 0 C154 102 100 28 100 28 Z"/></clipPath>
+        </defs>
+        <ellipse class="onda o1" cx="100" cy="232" rx="30" ry="7" fill="none" stroke="#6CADDF" stroke-width="2"/>
+        <ellipse class="onda o2" cx="100" cy="232" rx="30" ry="7" fill="none" stroke="#6CADDF" stroke-width="2"/>
+        <ellipse class="onda o3" cx="100" cy="232" rx="30" ry="7" fill="none" stroke="#6CADDF" stroke-width="2"/>
+        <path class="pino" pathLength="1" d="M100 231 C61 180 22 141 22 101 a78 78 0 1 1 156 0 c0 40 -39 79 -78 130 Z"
+              fill="none" stroke="#6CADDF" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/>
+        <path class="gota-contorno" pathLength="1" d="M100 28 C100 28 46 102 46 128 a54 54 0 1 0 108 0 C154 102 100 28 100 28 Z"
+              fill="none" stroke="#2E62A8" stroke-width="5" stroke-linejoin="round"/>
+        <g clip-path="url(#clipGotaIntro)"><rect class="nivel" x="0" y="190" width="200" height="120" fill="url(#gotaIntroGrad)"/></g>
+        <path class="reflexo" pathLength="1" d="M82 138 a28 28 0 0 0 25 26" fill="none" stroke="#C4E0F5" stroke-width="6" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h1 class="intro-nome" aria-label="Água em Dia"><span>Água</span> <span>em</span> <span>Dia</span></h1>
+    <p class="intro-lema">Cada vazamento na rua tem hora para acabar.</p>
+    <span class="intro-pular">toque para pular</span>
+  </section>
+
+  <section id="telaAuth" class="ent-tela auth oculto">
+    <div class="auth-cartao">
+      <button type="button" class="btn-tema flutuante" onclick="alternarTema()" aria-label="Alternar tema claro e escuro" title="Alternar tema: azul-céu / preto e dourado">
+      <svg class="ico ico-lua" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z"/></svg>
+      <svg class="ico ico-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5"/></svg>
+    </button>
+      <svg class="auth-logo" viewBox="0 0 200 240" width="84" height="100" aria-hidden="true">
+        <defs><linearGradient id="gotaLoginGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".55" stop-color="#BED2E5"/><stop offset="1" stop-color="#6FA6D9"/></linearGradient>
+        <mask id="furoGotaLogin"><rect width="200" height="240" fill="#fff"/><path d="M107 50 C107 50 65 104 65 129 a41 41 0 1 0 82 0 C147 104 107 50 107 50 Z" fill="#000"/></mask></defs>
+        <path d="M100 231 C61 180 22 141 22 101 a78 78 0 1 1 156 0 c0 40 -39 79 -78 130 Z" fill="rgba(10,30,62,.55)" stroke="#FAFAFA" stroke-width="12" stroke-linejoin="round"/>
+        <path d="M100 28 C100 28 46 102 46 128 a54 54 0 1 0 108 0 C154 102 100 28 100 28 Z" fill="url(#gotaLoginGrad)"/>
+        <path d="M80 140 a28 28 0 0 0 26 26" fill="none" stroke="#12345C" stroke-opacity=".45" stroke-width="7" stroke-linecap="round"/>
+      </svg>
+      <h2 id="authTitulo" class="auth-titulo">Bem-vindo(a)</h2>
+      <p id="authSub" class="auth-sub">Entre para registrar e acompanhar vazamentos na sua rua.</p>
+
+      <div id="authPassoPrincipal">
+        <div class="auth-abas" role="tablist">
+          <button role="tab" id="tabEntrar" aria-selected="true" onclick="authAba('entrar')">Entrar</button>
+          <button role="tab" id="tabCriar" aria-selected="false" onclick="authAba('criar')">Criar conta</button>
+        </div>
+
+        <div id="googleReal" class="google-real"></div>
+        <button type="button" id="btnGoogle" class="btn-google" onclick="entrarComGoogle()">
+          <span class="g-letra" aria-hidden="true">G</span>Continuar com Google
+        </button>
+        <div class="auth-ou"><span>ou com e-mail</span></div>
+
+        <form id="formEntrar" novalidate onsubmit="return enviarEntrar(event)">
+          <label class="campo-rot" for="entEmail">E-mail</label>
+          <input class="campo" id="entEmail" type="email" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="voce@email.com" required>
+          <label class="campo-rot" for="entSenha">Senha</label>
+          <div class="campo-senha">
+            <input class="campo" id="entSenha" type="password" autocomplete="current-password" placeholder="Sua senha" required>
+            <button type="button" class="ver-senha" onclick="alternarSenha('entSenha',this)" aria-label="Mostrar senha">mostrar</button>
+          </div>
+          <label class="auth-check"><input type="checkbox" id="entLembrar" checked> Manter conectado neste aparelho</label>
+          <p class="auth-erro" id="erroEntrar" role="alert"></p>
+          <button class="btn btn-1 auth-enviar" type="submit">Entrar</button>
+          <button type="button" class="auth-link" onclick="esqueciSenha()">Esqueci minha senha</button>
+        </form>
+
+        <form id="formCriar" class="oculto" novalidate onsubmit="return enviarCriar(event)">
+          <label class="campo-rot" for="criNome">Nome completo</label>
+          <input class="campo" id="criNome" type="text" autocomplete="name" placeholder="Maria Souza" required>
+          <label class="campo-rot" for="criUsuario">Nome de usuário</label>
+          <div class="campo-usuario"><span aria-hidden="true">@</span><input class="campo" id="criUsuario" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="20" placeholder="seu.usuario" oninput="this.value=limparUsuario(this.value)" required></div>
+          <label class="campo-rot" for="criCpf">CPF</label>
+          <input class="campo" id="criCpf" type="text" inputmode="numeric" autocomplete="off" maxlength="14" placeholder="000.000.000-00" oninput="this.value=mascararCPF(this.value)" required>
+          <label class="campo-rot" for="criEmail">E-mail</label>
+          <input class="campo" id="criEmail" type="email" autocomplete="email" inputmode="email" placeholder="voce@email.com" required>
+          <label class="campo-rot" for="criTel">Celular com WhatsApp (DDD)</label>
+          <input class="campo" id="criTel" type="tel" autocomplete="tel-national" inputmode="tel" maxlength="15" placeholder="(14) 90000-0000" oninput="this.value=mascararTel(this.value)" required>
+          <label class="campo-rot" for="criSenha">Senha</label>
+          <div class="campo-senha">
+            <input class="campo" id="criSenha" type="password" autocomplete="new-password" placeholder="Crie uma senha (mínimo 8 caracteres)" required>
+            <button type="button" class="ver-senha" onclick="alternarSenha('criSenha',this)" aria-label="Mostrar senha">mostrar</button>
+          </div>
+          <label class="auth-check"><input type="checkbox" id="criTermos"> Li e aceito os termos de uso e a política de privacidade (LGPD). Meus dados servem só para identificar meus chamados.</label>
+          <p class="auth-erro" id="erroCriar" role="alert"></p>
+          <button class="btn btn-1 auth-enviar" type="submit">Criar conta</button>
+        </form>
+      </div>
+
+      <form id="formRecuperar" class="oculto" novalidate onsubmit="return enviarRecuperar(event)">
+        <p class="auth-aviso">Informe seu e-mail ou nome de usuário. Vamos mandar um código de 6 dígitos para o e-mail da conta.</p>
+        <label class="campo-rot" for="recAlvo">E-mail</label>
+        <input class="campo" id="recAlvo" type="email" autocomplete="username" autocapitalize="none" spellcheck="false" placeholder="voce@email.com" required>
+        <p class="auth-erro" id="erroRecuperar" role="alert"></p>
+        <button class="btn btn-1 auth-enviar" type="submit">Enviar código</button>
+        <button type="button" class="auth-link" onclick="voltarAuthPrincipal()">Voltar ao login</button>
+      </form>
+
+      <form id="formCodigo" class="oculto" novalidate onsubmit="return enviarCodigo(event)">
+        <p class="auth-aviso" id="recAviso"></p>
+        <button type="button" class="btn btn-2 auth-enviar" id="recAbrirGmail" style="margin-top:6px" onclick="abrirApp('gmail')">Abrir o Gmail do celular</button>
+        <label class="campo-rot" for="recCodigo">Código de 6 dígitos</label>
+        <input class="campo campo-codigo" id="recCodigo" type="text" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="······" oninput="this.value=this.value.replace(/\D/g,'').slice(0,6)" required>
+        <label class="campo-rot" for="recSenha">Nova senha</label>
+        <div class="campo-senha">
+          <input class="campo" id="recSenha" type="password" autocomplete="new-password" placeholder="Mínimo de 8 caracteres" required>
+          <button type="button" class="ver-senha" onclick="alternarSenha('recSenha',this)" aria-label="Mostrar senha">mostrar</button>
+        </div>
+        <p class="auth-erro" id="erroCodigo" role="alert"></p>
+        <button class="btn btn-1 auth-enviar" type="submit">Redefinir senha</button>
+        <button type="button" class="auth-link rec-reenviar" id="recReenviar" onclick="reenviarCodigo()">Reenviar código</button>
+        <button type="button" class="auth-link" onclick="voltarAuthPrincipal()">Cancelar</button>
+      </form>
+
+      
+
+      <form id="formCompletar" class="oculto" novalidate onsubmit="return enviarCompletar(event)">
+        <p class="auth-aviso" id="completarQuem"></p>
+        <label class="campo-rot" for="comCpf">CPF</label>
+        <input class="campo" id="comCpf" type="text" inputmode="numeric" maxlength="14" placeholder="000.000.000-00" oninput="this.value=mascararCPF(this.value)" required>
+        <label class="campo-rot" for="comTel">Celular (com DDD)</label>
+        <input class="campo" id="comTel" type="tel" inputmode="tel" maxlength="15" placeholder="(14) 90000-0000" oninput="this.value=mascararTel(this.value)" required>
+        <label class="auth-check"><input type="checkbox" id="comTermos"> Li e aceito os termos de uso e a política de privacidade (LGPD).</label>
+        <p class="auth-erro" id="erroCompletar" role="alert"></p>
+        <button class="btn btn-1 auth-enviar" type="submit">Concluir cadastro</button>
+        <button type="button" class="auth-link" onclick="voltarAuthPrincipal()">Cancelar</button>
+      </form>
+    </div>
+  </section>
+</div>
+      </div>
+      <div class="app-janela" id="appZap" inert></div>
+      <div class="app-janela" id="appGmail" inert></div>
+      <div class="zap-banner" id="zapBanner" role="status" aria-live="polite"></div>
+      <div class="bloqueio ativo" id="soBloqueio" role="button" tabindex="0" aria-label="Celular bloqueado. Toque para desbloquear" onclick="digitarSenha67()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();digitarSenha67()}">
+        <div class="bq-cad" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9.5" rx="2.4"/><path class="cad-f" d="M8 11V8a4 4 0 0 1 8 0v3"/><path class="cad-a" d="M8 11V8a4 4 0 0 1 7.7-1.6"/></svg></div>
+        <div class="bq-relogio"><b id="bqHora">--:--</b><span id="bqData"></span></div>
+        <div class="bq-dica" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 14l6-6 6 6"/></svg>Toque para desbloquear</div>
+      </div>
+      <button type="button" class="home-barra" onclick="irParaInicio()" aria-label="Voltar para a tela inicial"></button>
+    </div>
+    </div>
+
+  </section>
+
+  <!-- ============ VISTA 2 — PAINEL ============ -->
+  <section id="vista-op" class="oculto">
+    <div class="notas notas-op">
+      <div class="agora-op" id="agoraOp" role="status" aria-live="polite"></div>
+    </div>
+    <div class="kpis escada">
+      <div class="kpi destaque">
+        <span class="r"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px"><path d="M12 3s-6 7-6 10a6 6 0 0 0 12 0c0-3-6-10-6-10Z"/></svg>Perdendo agora</span>
+        <span class="v num" id="kpiVazao">0</span>
+        <span class="s">litros por hora nos chamados abertos</span>
+      </div>
+      <div class="kpi perigo">
+        <span class="r"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l3 2"/></svg>Volume já perdido</span>
+        <span class="v num" id="kpiVolume">0</span>
+        <span class="s" id="kpiFamilias">—</span>
+      </div>
+      <div class="kpi">
+        <span class="r"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Chamados abertos</span>
+        <span class="v num" id="kpiAbertos">0</span>
+        <span class="s" id="kpiAtrasados">—</span>
+      </div>
+      <div class="kpi bom">
+        <span class="r"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true" style="width:14px;height:14px"><path d="M20 6 9 17l-5-5"/></svg>Perda estancada</span>
+        <span class="v num" id="kpiEstancado">0</span>
+        <span class="s" id="kpiResolvidos">nenhum reparo concluído ainda</span>
+      </div>
+    </div>
+
+    <div class="painel" style="margin-bottom:17px">
+      <div class="painel-cabeca">
+        <span class="rotulo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 14l3-3 3 2 5-6"/></svg>Evolução da perda</span>
+        <span class="dica" id="badgeEvolucao">últimos 7 dias</span>
+      </div>
+      <div class="painel-corpo" id="graficoEvolucao"></div>
+    </div>
+
+    <div class="grade-op">
+      <div class="painel">
+        <div class="painel-cabeca">
+          <span class="rotulo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3 3 6v15l6-3 6 3 6-3V3l-6 3-6-3Z"/><path d="M9 3v15M15 6v15"/></svg>Mapa de perdas</span>
+          <span class="dica">tamanho da gota = vazão · clique para abrir o chamado</span>
+        </div>
+        <div class="mapa-caixa" id="caixaMapaOp"></div>
+        <div class="legenda">
+          <span><i style="background:#FF5A36"></i>Alta prioridade</span>
+          <span><i style="background:#F5B02A"></i>Média</span>
+          <span><i style="background:#6CADDF"></i>Baixa</span>
+          <span><i style="background:#38C172"></i>Reparo concluído</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="painel">
+          <div class="painel-cabeca">
+            <span class="rotulo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>Fila de atendimento</span>
+            <span class="dica" id="contagemFila" aria-live="polite">ordenada por perda</span>
+          </div>
+          <div class="filtros-fila" role="search" aria-label="Filtros da fila de atendimento">
+            <label for="filtroBairro" class="apenas-leitor-tela">Filtrar por bairro</label>
+            <select id="filtroBairro" class="filtro-campo" onchange="atualizarFiltroFila('bairro', this.value)">
+              <option value="todos">Todos os bairros</option>
+            </select>
+            <label for="filtroTipo" class="apenas-leitor-tela">Filtrar por tipo de ocorrência</label>
+            <select id="filtroTipo" class="filtro-campo" onchange="atualizarFiltroFila('tipo', this.value)">
+              <option value="todos">Todos os tipos</option>
+            </select>
+            <label for="filtroSituacao" class="apenas-leitor-tela">Filtrar por situação</label>
+            <select id="filtroSituacao" class="filtro-campo" onchange="atualizarFiltroFila('situacao', this.value)">
+              <option value="todos">Qualquer situação</option>
+              <option value="ABERTO">Aberto</option>
+              <option value="REPARO">Em reparo</option>
+              <option value="RESOLVIDO">Resolvido</option>
+            </select>
+            <label for="filtroTexto" class="apenas-leitor-tela">Buscar por rua ou protocolo</label>
+            <input id="filtroTexto" class="filtro-campo filtro-texto" type="search"
+                   placeholder="Buscar rua ou protocolo…" oninput="atualizarFiltroFila('texto', this.value)">
+            <button class="filtro-limpar" onclick="limparFiltrosFila()">Limpar filtros</button>
+          </div>
+          <div class="painel-corpo fila" id="filaOp"></div>
+        </div>
+        <div class="painel">
+          <div class="painel-cabeca">
+            <span class="rotulo" id="rotuloRanking"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="8"/><rect x="13" y="6" width="3" height="12"/></svg>Perda por bairro</span>
+            <div class="alternador-ranking" role="group" aria-label="Agrupar por">
+              <button id="botaoRankingBairro" aria-pressed="true" onclick="trocarModoRanking('bairro')">Bairro</button>
+              <button id="botaoRankingTipo" aria-pressed="false" onclick="trocarModoRanking('tipo')">Tipo</button>
+            </div>
+          </div>
+          <div class="painel-corpo" id="rankingOp"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="duas-colunas" style="margin-top:17px">
+      <div class="painel">
+        <div class="painel-cabeca">
+          <span class="rotulo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M21 21v-2a4 4 0 0 0-3-3.87"/><path d="M15 3.13a4 4 0 0 1 0 7.75"/></svg>Cidadãos colaboradores</span>
+          <span class="dica">quem mais ajuda a mapear a rede</span>
+        </div>
+        <div class="painel-corpo colaboradores" id="colaboradoresOp"></div>
+      </div>
+      <div class="painel">
+        <div class="painel-cabeca">
+          <span class="rotulo"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3s-6 7-6 10a6 6 0 0 0 12 0c0-3-6-10-6-10Z"/></svg>Avaliações recentes</span>
+          <span class="dica">o que os cidadãos disseram sobre os reparos</span>
+        </div>
+        <div class="painel-corpo" id="avaliacoesOp"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="avisos" aria-live="polite"></div>
+
+<div id="modalDetalhe" class="modal-fundo oculto" role="dialog" aria-modal="true"
+     aria-labelledby="modalDetalheTitulo" onclick="if(event.target.id==='modalDetalhe')fecharDetalheChamado()">
+  <div class="modal-cartao">
+    <button class="modal-fechar" onclick="fecharDetalheChamado()" aria-label="Fechar detalhes">×</button>
+    <div id="modalDetalheConteudo"></div>
+  </div>
+</div>
+
+<script src="js/api.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

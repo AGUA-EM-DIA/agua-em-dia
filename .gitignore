@@ -1,0 +1,22 @@
+# Configurações locais e credenciais
+.env
+.env.*
+!.env.example
+
+# Configuração local do banco de dados
+/backend/src/main/resources/application.properties
+
+# Permitir arquivos do frontend do backend, se existirem
+!/backend/src/main/resources/static/
+!/backend/src/main/resources/templates/
+
+# Arquivos locais do Postman
+.postman/
+postman/
+
+# IntelliJ
+.idea/
+
+# Arquivos do sistema
+Thumbs.db
+.DS_Store

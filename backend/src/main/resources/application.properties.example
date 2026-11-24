@@ -1,0 +1,31 @@
+# Copie este arquivo para application.properties (mesma pasta) e preencha.
+# O application.properties NÃO vai para o GitHub (está no .gitignore). Nunca coloque senhas em outro arquivo.
+
+# ---- Banco de dados MySQL (obrigatório) ----
+spring.datasource.url=jdbc:mysql://localhost:3306/aguaEmDia?serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=COLOQUE_SUA_SENHA_AQUI
+
+# ---- Segurança (obrigatório): invente um texto longo e aleatório, com 32 caracteres ou mais ----
+app.jwt.segredo=TROQUE_POR_UM_TEXTO_ALEATORIO_COM_MAIS_DE_32_CARACTERES
+
+# ---- Modo demonstração (simulações do protótipo). Em produção, use false ----
+app.demo=true
+
+# ---- Opcionais: deixe em branco o que ainda não tiver ----
+# Foto -> tipo de vazamento (Gemini): chave criada em https://aistudio.google.com/apikey
+app.gemini.chave=
+# Mapa do Google (chave restrita ao seu domínio/localhost no Google Cloud Console)
+app.google.maps-key=
+# Login com Google: ID do cliente OAuth (tipo "Aplicativo da Web")
+app.google.client-id=
+# Chave para sistemas autorizados atualizarem a situação dos vazamentos (fora do modo demonstração)
+app.servico.chave=
+
+# ---- E-mail real (recuperação de senha). Exemplo com Gmail + "senha de app" ----
+# spring.mail.host=smtp.gmail.com
+# spring.mail.port=587
+# spring.mail.username=seuemail@gmail.com
+# spring.mail.password=SENHA_DE_APP_DE_16_LETRAS
+# spring.mail.properties.mail.smtp.auth=true
+# spring.mail.properties.mail.smtp.starttls.enable=true
